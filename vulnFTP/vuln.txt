@@ -1,0 +1,9 @@
+Lab FTP server - intentional vulnerabilities
+
+SEARCH "<name>"   simple stack buffer overflow on the file name
+                 (reachable on Windows and Linux)
+LOGIN "<user>"    Windows SEH-bypass overflow on the username
+PUT "<name>"      stack overflow on the stored name; DEP-bypass ROP
+                 target (Windows, advanced)
+
+These are deliberate, for the course exploit-development work.

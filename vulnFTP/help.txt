@@ -1,0 +1,15 @@
+Lab FTP server - command help
+
+LOGIN "<user>" "<pass>"    authenticate (default: student / student)
+CREATE "<user>" "<pass>"   create a new account
+SEARCH "<name>"            check if a file exists under the server root
+LIST                       list all file names on the server
+PUT "<name>" <size>        upload a file to the server (stored as <name>)
+GET "<name>"               download a file from the server
+HELP                       show this help text (no login needed)
+VULN                       show the intentional vulnerabilities (no login)
+EXIT                       close the connection
+
+Notes:
+- LOGIN, CREATE, HELP and VULN need no login; everything else does.
+- Quote names that contain spaces.

@@ -1,0 +1,137 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.vcxproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vulnFTP.vcxproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vulnFTP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:client.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\build.sh||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:build.sh||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\test_client.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:test_client.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.exe||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:server.exe||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "vulnFTP.cpp",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.cpp",
+              "RelativeDocumentMoniker": "vulnFTP.cpp",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.cpp",
+              "RelativeToolTip": "vulnFTP.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-10-17T19:11:41.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "vulnFTP.vcxproj",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.vcxproj",
+              "RelativeDocumentMoniker": "vulnFTP.vcxproj",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\vulnFTP.vcxproj",
+              "RelativeToolTip": "vulnFTP.vcxproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000698|",
+              "WhenOpened": "2026-10-17T19:11:37.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "build.sh",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\build.sh",
+              "RelativeDocumentMoniker": "build.sh",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\build.sh",
+              "RelativeToolTip": "build.sh",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|",
+              "WhenOpened": "2026-10-17T19:10:42.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "test_client.py",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\test_client.py",
+              "RelativeDocumentMoniker": "test_client.py",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\test_client.py",
+              "RelativeToolTip": "test_client.py",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHfSURBVDhPpZCxaxNhGMZ/9zVJaUuDUlq1FBWLZBFTCXo4BFyU1qGKi4OkIHhkzF/g0KF00M2lR9YUdDDQQVAcJILoQUd1UNRmkhoRm8RL777v7nOoCZd4AcEH3uF5nvd73vd74X\u002BgtTai3LIsHeWDEEJct217a1DvwbIs7bpubFUqFW3b9naxWLwWfSOipAvHcfqqi0KhkMtms3cty1rsaomeG4FpmoMSANVqlXQ6nQMWgacMC4hOBchduEj\u002ByjKjScGh8SS1Wq3nxQZEN3j1eY/Vrfe8rTeQvsf89ARLS1cz5XIZ/uUGXxptQiVRUhJIybudXaZn52a7vbEBpmkyNb/A69YM9W8tDEJOTI2hpI\u002BSkvOZH2f13sNAB\u002B07sV9wHIdH9Unquz9RvoeUPtL3UFISKkky\u002BAT7HwTi6FpsgGma3N9\u002Bg5I\u002BKaFZyU8wOpJChwHnjiuE9wKCXyC/zsQGOI7DeELjtiUPbgky6Wd/HA3KBelC4AIpNfQGl88cQ0mfI5PugRhKkM2DUk0INYwtPI/dAGAlf4rbl06T6DyBVgeCABJzYPhwcm0V8ICNvwJKpVIf37h3IxSyKVAuBMDIYQAMw1jvaxwGrYNl3Xq5o79vat3Y3Nedj4\u002B11je7/m\u002BXOuyzFtDhUgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-17T19:09:46.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "client.c",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\client.c",
+              "RelativeDocumentMoniker": "client.c",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\client.c",
+              "RelativeToolTip": "client.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-10-17T19:09:33.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "server.c",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.c",
+              "RelativeDocumentMoniker": "server.c",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.c",
+              "RelativeToolTip": "server.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-10-17T19:08:02.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "server.exe",
+              "DocumentMoniker": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.exe",
+              "RelativeDocumentMoniker": "server.exe",
+              "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.exe",
+              "RelativeToolTip": "server.exe",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000165|",
+              "WhenOpened": "2026-10-17T19:07:57.737Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
