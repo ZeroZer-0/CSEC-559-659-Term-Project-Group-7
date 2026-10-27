@@ -41,8 +41,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\corecrt.h",
               "ViewState": "AgIAAEsBAAAAAAAAAAAAwG4BAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-10-17T21:00:23.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-17T21:00:23.844Z"
             },
             {
               "$type": "Document",
@@ -54,8 +53,7 @@
               "RelativeToolTip": "vulnFTP\\handlers.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-10-17T20:57:52.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-17T20:57:52.872Z"
             },
             {
               "$type": "Document",
@@ -67,8 +65,7 @@
               "RelativeToolTip": "vulnFTP\\parser.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-10-17T20:57:37.626Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-17T20:57:37.626Z"
             },
             {
               "$type": "Document",
@@ -78,7 +75,7 @@
               "RelativeDocumentMoniker": "vulnFTP\\server.c",
               "ToolTip": "C:\\Users\\willi\\Documents\\CSEC 559 UG Sem in Computing Security\\vulnFTP\\vulnFTP\\server.c",
               "RelativeToolTip": "vulnFTP\\server.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2026-10-17T20:56:33.628Z",
               "EditorCaption": ""

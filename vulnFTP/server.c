@@ -1,4 +1,10 @@
-//Simplified FTP-style server
+/* Simplified FTP-style server (lab target).
+ *
+ * Threaded, one thread per connection. Line-based control channel;
+ * SEND/RECEIVE add a raw data phase on the same socket. Built around
+ * three unchecked strcpy() calls (see handlers.c) so it can be made
+ * exploitable later. Do not run outside a lab VM.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +24,7 @@
   #include <sys/types.h>
 #endif
 
-
+/* ------------------------------------------------------------------ */
 static void make_root(void)
 {
 #ifdef _WIN32
@@ -29,6 +35,7 @@ static void make_root(void)
 }
 
 #ifdef _WIN32
+/* Print the addresses handy for a later ROP chain, like vulnserver. */
 static void print_vuln_addresses(void)
 {
     HMODULE k32 = GetModuleHandleA("kernel32.dll");
@@ -42,6 +49,9 @@ static void print_vuln_addresses(void)
 }
 #endif
 
+/* read one newline-terminated line, byte at a time so the SEND/RECEIVE
+ * data phase isn't disturbed by read-ahead. strips trailing \r.
+ * returns length, or -1 on disconnect. */
 static int read_line(sock_t fd, char *buf, int bufsize)
 {
     int total = 0;
@@ -56,6 +66,7 @@ static int read_line(sock_t fd, char *buf, int bufsize)
     return total;
 }
 
+/* ------------------------------------------------------------------ */
 static void serve_client(sock_t client)
 {
     session_t s;
@@ -101,7 +112,7 @@ static void serve_client(sock_t client)
     CLOSESOCK(client);
 }
 
-
+/* thread trampoline */
 #ifdef _WIN32
 static DWORD WINAPI client_thread(LPVOID p) { serve_client((sock_t)p); return 0; }
 #else
@@ -119,6 +130,7 @@ static void spawn_client(sock_t client)
 #endif
 }
 
+/* ------------------------------------------------------------------ */
 int main(int argc, char **argv)
 {
     int port = PORT;
@@ -128,6 +140,9 @@ int main(int argc, char **argv)
     make_root();
 
 #ifdef _WIN32
+    /* Load the gadget DLL if it's next to the exe. Only needed for the
+     * DEP-bypass bonus. Done at runtime so neither MSVC nor MinGW needs
+     * an import library for it; missing DLL is fine, we just skip it. */
     LoadLibraryA("essfunc.dll");
     print_vuln_addresses();
 #else

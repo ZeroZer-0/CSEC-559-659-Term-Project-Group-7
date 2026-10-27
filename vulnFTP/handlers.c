@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common.h"      /* must come first: pulls in winsock2.h on Windows */
 #include "handlers.h"
 
 #include <stdio.h>
@@ -12,11 +12,15 @@
   #include <dirent.h>
 #endif
 
+/* ------------------------------------------------------------------ */
+/* small helpers                                                      */
+/* ------------------------------------------------------------------ */
 static void reply(sock_t fd, const char *msg)
 {
     SOCK_SEND(fd, msg, strlen(msg));
 }
 
+/* send exactly n bytes */
 static int send_all(sock_t fd, const char *buf, long n)
 {
     long off = 0;
@@ -28,6 +32,7 @@ static int send_all(sock_t fd, const char *buf, long n)
     return 0;
 }
 
+/* read exactly n bytes */
 static int recv_exact(sock_t fd, char *buf, long n)
 {
     long off = 0;
@@ -39,11 +44,15 @@ static int recv_exact(sock_t fd, char *buf, long n)
     return 0;
 }
 
+/* build "ftproot/<name>" into out */
 static void root_path(char *out, size_t outsz, const char *name)
 {
     snprintf(out, outsz, "%s/%s", FTP_ROOT, name);
 }
 
+/* ------------------------------------------------------------------ */
+/* in-memory account store, seeded with student/student               */
+/* ------------------------------------------------------------------ */
 typedef struct { char user[MAX_NAME]; char pass[MAX_NAME]; } account_t;
 static account_t g_accts[MAX_USERS] = { { "student", "student" } };
 static int g_acct_count = 1;
@@ -57,12 +66,20 @@ static int check_login(const char *user, const char *pass)
     return 0;
 }
 
+/* ================================================================== */
+/* LOGIN user pass                                                    */
+/*                                                                      */
+/* VULN SPOT 2 (SEH target on Windows): the username is copied into a  */
+/* fixed stack buffer with strcpy(). Normal usernames work; an         */
+/* over-long username overflows. Wired to real auth so the server      */
+/* actually logs you in.                                               */
+/* ================================================================== */
 void handle_login(session_t *s, sock_t fd, char **argv, int argc)
 {
     if (argc < 3) { reply(fd, "ERR usage: LOGIN <user> <pass>\n"); return; }
 
     char username[2000];
-    strcpy(username, argv[1]);
+    strcpy(username, argv[1]);          /* <-- VULNERABLE */
 
     if (check_login(username, argv[2])) {
         s->logged_in = 1;
@@ -74,6 +91,9 @@ void handle_login(session_t *s, sock_t fd, char **argv, int argc)
     }
 }
 
+/* ================================================================== */
+/* CREATE user pass   (benign, bounded)                               */
+/* ================================================================== */
 void handle_create(session_t *s, sock_t fd, char **argv, int argc)
 {
     (void)s;
@@ -91,13 +111,20 @@ void handle_create(session_t *s, sock_t fd, char **argv, int argc)
     reply(fd, "OK account created\n");
 }
 
+/* ================================================================== */
+/* SEARCH "name"                                                      */
+/*                                                                      */
+/* VULN SPOT 1 (plain stack overflow, cross-platform): filename copied */
+/* into a 128-byte stack buffer with strcpy(). Then actually stats the */
+/* file under ftproot and reports its size.                           */
+/* ================================================================== */
 void handle_search(session_t *s, sock_t fd, char **argv, int argc)
 {
     if (!s->logged_in) { reply(fd, "ERR not logged in\n"); return; }
     if (argc < 2) { reply(fd, "ERR usage: SEARCH <name>\n"); return; }
 
     char filename[128];
-    strcpy(filename, argv[1]);
+    strcpy(filename, argv[1]);          /* <-- VULNERABLE */
 
     char path[MAX_LINE];
     root_path(path, sizeof(path), filename);
@@ -113,6 +140,9 @@ void handle_search(session_t *s, sock_t fd, char **argv, int argc)
     reply(fd, out);
 }
 
+/* ================================================================== */
+/* LIST   - list files in ftproot                                     */
+/* ================================================================== */
 void handle_list(session_t *s, sock_t fd)
 {
     if (!s->logged_in) { reply(fd, "ERR not logged in\n"); return; }
@@ -141,16 +171,27 @@ void handle_list(session_t *s, sock_t fd)
     }
     closedir(d);
 #endif
-    reply(fd, ".\n");
+    reply(fd, ".\n");   /* end-of-listing marker */
 }
 
+/* ================================================================== */
+/* PUT "storename" size   - client uploads a file TO the server.      */
+/* The client picks storename (the basename of its local file) and    */
+/* sends the byte count; the server stores the bytes as ftproot/      */
+/* <storename>.                                                       */
+/* Protocol: server replies "READY\n", reads exactly <size> bytes,    */
+/* writes ftproot/<storename>, then replies "OK stored\n".            */
+/*                                                                      */
+/* VULN SPOT 3 (advanced / DEP-bypass ROP target on Windows):          */
+/* storename is copied into a 1000-byte stack buffer with strcpy().    */
+/* ================================================================== */
 void handle_put(session_t *s, sock_t fd, char **argv, int argc)
 {
     if (!s->logged_in) { reply(fd, "ERR not logged in\n"); return; }
     if (argc < 3) { reply(fd, "ERR usage: PUT <storename> <size>\n"); return; }
 
     char filename[1000];
-    strcpy(filename, argv[1]);
+    strcpy(filename, argv[1]);          /* <-- VULNERABLE */
 
     long size = atol(argv[2]);
     if (size < 0 || size > 100L * 1024 * 1024) {
@@ -179,6 +220,16 @@ void handle_put(session_t *s, sock_t fd, char **argv, int argc)
     reply(fd, ok ? "OK stored\n" : "ERR transfer failed\n");
 }
 
+/* ================================================================== */
+/* HELP / VULN  - no credentials required. Both just stream a text     */
+/* file to the client as plain lines, terminated by a line containing  */
+/* only "." (the same end marker LIST uses). The client prints the     */
+/* lines; nothing is saved to a file on the client side.               */
+/*                                                                      */
+/* HELP streams ./help.txt (how to use the service).                   */
+/* VULN streams ./vuln.txt (which field is vulnerable to what).        */
+/* If the file is missing, a default copy is written first.            */
+/* ================================================================== */
 static const char *DEFAULT_HELP =
     "Lab FTP server - command help\n"
     "\n"
@@ -215,6 +266,7 @@ static void ensure_file(const char *path, const char *def)
     if (f) { fputs(def, f); fclose(f); }
 }
 
+/* stream a text file to the client, then a line containing only "." */
 static void send_text_then_dot(sock_t fd, const char *path)
 {
     FILE *f = fopen(path, "rb");
@@ -228,7 +280,7 @@ static void send_text_then_dot(sock_t fd, const char *path)
         last = (unsigned char)chunk[r - 1];
     }
     fclose(f);
-    if (last != '\n') reply(fd, "\n");
+    if (last != '\n') reply(fd, "\n");   /* ensure "." begins its own line */
     reply(fd, ".\n");
 }
 
@@ -244,6 +296,13 @@ void handle_vuln(sock_t fd)
     send_text_then_dot(fd, "vuln.txt");
 }
 
+/* ================================================================== */
+/* GET "name"   - server sends the file TO the client (download).     */
+/* The client names a file under the server root; the client side     */
+/* decides where to save it locally (GET's second arg is client-only).*/
+/* Protocol: server replies "OK <size>\n" then <size> raw bytes,      */
+/* or "ERR not found\n".                                              */
+/* ================================================================== */
 void handle_get(session_t *s, sock_t fd, char **argv, int argc)
 {
     if (!s->logged_in) { reply(fd, "ERR not logged in\n"); return; }
