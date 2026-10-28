@@ -72,13 +72,20 @@ static void serve_client(sock_t client)
     session_t s;
     memset(&s, 0, sizeof(s));
 
-    char line[MAX_LINE];
+    /* Receive buffer lives on the HEAP, not the stack. Keeping it off the
+     * connection thread's stack is what lets the command handlers' small
+     * stack buffers (e.g. LOGIN's username[2000]) overflow up to the
+     * thread's SEH record - a stack-allocated line[] would sit in that
+     * overflow path and block it. */
+    char *line = (char *)malloc(MAX_LINE);
+    if (!line) { CLOSESOCK(client); return; }
+
     const char *banner =
         "Welcome. Commands: LOGIN CREATE SEARCH LIST PUT GET HELP VULN EXIT\n";
     SOCK_SEND(client, banner, strlen(banner));
 
     for (;;) {
-        int n = read_line(client, line, sizeof(line));
+        int n = read_line(client, line, MAX_LINE);
         if (n < 0) break;
         if (n == 0) continue;
 
@@ -98,6 +105,7 @@ static void serve_client(sock_t client)
             case CMD_EXIT: {
                 const char *bye = "GOODBYE\n";
                 SOCK_SEND(client, bye, strlen(bye));
+                free(line);
                 CLOSESOCK(client);
                 return;
             }
@@ -109,6 +117,7 @@ static void serve_client(sock_t client)
         }
     }
 
+    free(line);
     CLOSESOCK(client);
 }
 
