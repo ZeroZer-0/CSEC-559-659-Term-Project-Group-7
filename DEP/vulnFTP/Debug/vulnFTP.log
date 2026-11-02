@@ -1,0 +1,8 @@
+﻿  server.c
+C:\Users\willi\Documents\CSEC 559 UG Sem in Computing Security\vulnFTP\vulnFTP\common.h(15,11): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  (compiling source file 'server.c')
+      C:\Users\willi\Documents\CSEC 559 UG Sem in Computing Security\vulnFTP\vulnFTP\common.h(15,11):
+      '_CRT_SECURE_NO_WARNINGS' previously declared on the command line
+  
+C:\Users\willi\Documents\CSEC 559 UG Sem in Computing Security\vulnFTP\vulnFTP\server.c(164,43): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  vulnFTP.vcxproj -> C:\Users\willi\Documents\CSEC 559 UG Sem in Computing Security\vulnFTP\Debug\vulnFTP.exe
