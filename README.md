@@ -36,6 +36,7 @@ Each folder has a `python tools` directory:
 - `client.py` / `test_client.py` - interact with and test the normal FTP functionality.
 - `X_pattern.py` - sends a pattern to find the offset for that stage.
 - `X_exploit.py` - delivers the payload for that stage. (`Simple Overflow` has both `windows_` and `linux_` pattern/exploit scripts.)
+- `x_working_exploit_proof.png` - proof screenshot showing the program is exploitable and that the provided exploit can work. 
 
 These worked for us but may need tweaking for your environment: set the target `HOST`, drop in your own msfvenom shellcode, and re-confirm the offset with the pattern script if your build differs. Bad chars for every stage are `\x00 \x0a \x0d \x22`.
 
