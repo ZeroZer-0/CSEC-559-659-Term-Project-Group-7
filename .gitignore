@@ -14,3 +14,4 @@ x64/
 *.vsidx
 Browse.VC.db
 Solution.VC.db
+!/Executables/**/*
