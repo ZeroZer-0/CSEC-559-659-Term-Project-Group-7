@@ -20,6 +20,8 @@ Three folders, each a separate Visual Studio project. The server source is rough
 | `SEH` | SEH overwrite | `login` username | /GS off, SafeSEH off, DEP off, ASLR off |
 | `DEP` | DEP bypass via VirtualProtect ROP | `put` file path | /GS off, SafeSEH off, ASLR off, DEP **on** |
 
+Compiled executables can be found in `Executables` then within the respective folder for each Visual Studio project (essfunc.dll is included).
+
 `essfunc.dll` ships next to each server. It loads at a fixed base (0x62500000, no ASLR) and provides the jmp esp / pop-pop-ret / ROP gadgets.
 
 ## Setup
