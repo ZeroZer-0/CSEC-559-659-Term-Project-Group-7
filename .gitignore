@@ -1,0 +1,16 @@
+# Visual Studio build output / cache
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+*.exe
+*.pdb
+*.obj
+*.ilk
+*.ipch
+*.tlog
+*.user
+*.suo
+*.vsidx
+Browse.VC.db
+Solution.VC.db
