@@ -21,6 +21,7 @@ Three folders, each a separate Visual Studio project. The server source is rough
 | `DEP` | DEP bypass via VirtualProtect ROP | `put` file path | /GS off, SafeSEH off, ASLR off, DEP **on** |
 
 Compiled executables can be found in `Executables` then within the respective folder for each Visual Studio project (essfunc.dll is included).
+- For Simple Overflow vulnFTP.exe is for windows and server_linux is for Linux
 
 `essfunc.dll` ships next to each server. It loads at a fixed base (0x62500000, no ASLR) and provides the jmp esp / pop-pop-ret / ROP gadgets.
 
@@ -38,7 +39,6 @@ Each folder has a `python tools` directory:
 - `client.py` / `test_client.py` - interact with and test the normal FTP functionality.
 - `X_pattern.py` - sends a pattern to find the offset for that stage.
 - `X_exploit.py` - delivers the payload for that stage. (`Simple Overflow` has both `windows_` and `linux_` pattern/exploit scripts.)
-- `x_working_exploit_proof.png` - proof screenshot showing the program is exploitable and that the provided exploit can work. 
 
 These worked for us but may need tweaking for your environment: set the target `HOST`, drop in your own msfvenom shellcode, and re-confirm the offset with the pattern script if your build differs. Bad chars for every stage are `\x00 \x0a \x0d \x22`.
 
